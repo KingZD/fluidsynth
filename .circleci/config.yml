@@ -30,7 +30,7 @@ jobs:
           command: wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.4.tar.bz2
       - run:
           name: Install ALSA
-          command: tar -xvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4.tar.bz2 && ./configure && make && make install
+          command: tar -xvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4 && ./configure && make && make install
       - run:
           name: Build Cerbero and Oboe
           working_directory: doc/android
