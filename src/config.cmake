@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 /* Define to enable ALSA driver */
-#cmakedefine ALSA_SUPPORT @ALSA_SUPPORT@
+#define ALSA_SUPPORT  1
 
 /* Define to activate sound output to files */
 #cmakedefine AUFILE_SUPPORT @AUFILE_SUPPORT@
