@@ -16,9 +16,12 @@ jobs:
       #     ndk-version: android-ndk-r18b
       #     ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
       - run:
+          name: Install ALSA
+          command: sudo apt-get install alsa-lib alsa-utils
+      - run:
           name: Install FluidSynth build dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
-            bison flex yasm pkg-config libpulse-dev alsa-lib
+            bison flex yasm pkg-config libpulse-dev
             python3-dev gettext build-essential pkg-config curl
             libasound2-dev dpkg-dev
             debhelper build-essential devscripts fakeroot transfig gperf libdbus-glib-1-dev
