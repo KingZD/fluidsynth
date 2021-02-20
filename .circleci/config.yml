@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Install FluidSynth build dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
-            bison flex yasm pkg-config libpulse-dev
+            bison flex yasm pkg-config libpulse-dev alsa-lib
             python3-dev gettext build-essential pkg-config curl
             libasound2-dev dpkg-dev
             debhelper build-essential devscripts fakeroot transfig gperf libdbus-glib-1-dev
