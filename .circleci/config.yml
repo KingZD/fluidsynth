@@ -17,10 +17,10 @@ jobs:
       #     ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
       - run:
           name: DOWN ALSA
-          command: wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.4.tar.bz2
+          command: cd ../ && mkdir alsa && cd alsa && wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.4.tar.bz2
       - run:
           name: Install ALSA
-          command: tar -xvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4 && ./configure && sudo make && sudo make install
+          command: tar -xvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4 && ./configure && sudo make && sudo make install && cd ../code
       - run:
           name: Install FluidSynth build dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
