@@ -16,11 +16,6 @@ jobs:
       #     ndk-version: android-ndk-r18b
       #     ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
       - run:
-          name: Install ALSA
-          command: wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.4.tar.bz2
-            tar -zxvf alsa-lib-1.2.4.tar.bz2
-            cd alsa-lib-1.2.4.tar.bz2 && ./configure && make && make install
-      - run:
           name: Install FluidSynth build dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
             bison flex yasm pkg-config libpulse-dev
@@ -30,6 +25,12 @@ jobs:
             wget glib-networking libxtst-dev libxrandr-dev
             git intltool ccache python3-setuptools autogen maven make
       - checkout
+      - run:
+          name: DOWN ALSA
+          command: wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.4.tar.bz2
+      - run:
+          name: Install ALSA
+          command: tar -zxvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4.tar.bz2 && ./configure && make && make install
       - run:
           name: Build Cerbero and Oboe
           working_directory: doc/android
