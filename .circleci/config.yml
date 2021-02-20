@@ -20,10 +20,10 @@ jobs:
           command: cd ../ && mkdir alsa && cd alsa && wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.4.tar.bz2 && pwd
       - run:
           name: Install ALSA
-          command: cd ../alsa && tar -xvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4 && ./configure && sudo make && sudo make install && cd ../code
+          command: cd ../alsa && tar -xvf alsa-lib-1.2.4.tar.bz2 && cd alsa-lib-1.2.4 && ./configure && sudo make && sudo make install && pwd
       - run:
           name: Install FluidSynth build dependencies
-          command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
+          command: pwd && sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
             bison flex yasm pkg-config libpulse-dev
             python3-dev gettext build-essential pkg-config curl
             libasound2-dev dpkg-dev
