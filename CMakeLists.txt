@@ -80,12 +80,8 @@ option ( enable-pkgconfig "use pkg-config to locate fluidsynth's (mostly optiona
 option ( enable-pulseaudio "compile PulseAudio support (if it is available)" on )
 option ( enable-readline "compile readline lib line editing (if it is available)" on )
 option ( enable-threads "enable multi-threading support (such as parallel voice synthesis)" on )
-
-# Platform specific options
-if ( CMAKE_SYSTEM MATCHES "Linux|FreeBSD|DragonFly" )
-    option ( enable-lash "compile LASH support (if it is available)" on )
-    option ( enable-alsa "compile ALSA support (if it is available)" on )
-endif ( CMAKE_SYSTEM MATCHES "Linux|FreeBSD|DragonFly" )
+option ( enable-lash "compile LASH support (if it is available)" on )
+option ( enable-alsa "compile ALSA support (if it is available)" on )
 
 if ( CMAKE_SYSTEM MATCHES "Linux" )
     option ( enable-systemd "compile systemd support (if it is available)" on )
