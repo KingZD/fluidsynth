@@ -27,11 +27,22 @@
  * fluid_audio_driver_t
  */
 
+/*
+ * fluid_playlist_item
+ */
+typedef struct
+{
+    short *out_short;  /** 32bit output stream */
+    float *out_float;  /** 16bit output stream */
+} fluid_audio_buffer_t;
+
+
 typedef struct _fluid_audriver_definition_t fluid_audriver_definition_t;
 
 struct _fluid_audio_driver_t
 {
     const fluid_audriver_definition_t *define;
+    fluid_audio_buffer_t *buffer;
 };
 
 void fluid_audio_driver_settings(fluid_settings_t *settings);
@@ -72,6 +83,7 @@ new_fluid_opensles_audio_driver(fluid_settings_t* settings,
 		fluid_synth_t* synth);
 void delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
 void fluid_opensles_audio_driver_settings(fluid_settings_t* settings);
+void fluid_opensles_audio_buffer_callback(fluid_audio_driver_t *p,fluid_audio_buffer_t *buffer);
 #endif
 
 #if OBOE_SUPPORT
@@ -80,6 +92,7 @@ new_fluid_oboe_audio_driver(fluid_settings_t* settings,
 		fluid_synth_t* synth);
 void delete_fluid_oboe_audio_driver(fluid_audio_driver_t* p);
 void fluid_oboe_audio_driver_settings(fluid_settings_t* settings);
+void fluid_oboe_audio_buffer_callback(fluid_audio_driver_t *p,fluid_audio_buffer_t *buffer);
 #endif
 
 #if COREAUDIO_SUPPORT
