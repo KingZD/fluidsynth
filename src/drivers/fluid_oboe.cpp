@@ -80,7 +80,7 @@ public:
         if(stream->getFormat() == AudioFormat::Float)
         {
             fluid_synth_write_float(dev->synth, numFrames, static_cast<float *>(audioData), 0, 2, static_cast<float *>(audioData), 1, 2);
-            if(dev->driver && dev->driver->buffer)
+            if(dev->driver && dev->driver.buffer)
                 dev->driver.buffer->out_float = out_float;
         }
         else

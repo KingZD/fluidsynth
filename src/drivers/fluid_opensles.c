@@ -348,7 +348,7 @@ void process_fluid_buffer(fluid_opensles_audio_driver_t *dev)
     if(dev->is_sample_format_float)
     {
         fluid_synth_write_float(dev->synth, period_frames, out_float, 0, 2, out_float, 1, 2);
-        if(dev->driver && dev->driver->buffer)
+        if(dev->driver && dev->driver.buffer)
             dev->driver.buffer->out_float = out_float;
     }
     else
