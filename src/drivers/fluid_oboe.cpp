@@ -81,13 +81,13 @@ public:
         {
             fluid_synth_write_float(dev->synth, numFrames, static_cast<float *>(audioData), 0, 2, static_cast<float *>(audioData), 1, 2);
             if(dev->driver && dev->driver->buffer)
-                dev->driver->buffer->out_float = out_float;
+                dev->driver.buffer->out_float = out_float;
         }
         else
         {
             fluid_synth_write_s16(dev->synth, numFrames, static_cast<short *>(audioData), 0, 2, static_cast<short *>(audioData), 1, 2);
-            if(dev->driver && dev->driver->buffer)
-                dev->driver->buffer->out_short = out_short;
+            if(dev->driver && dev->driver.buffer)
+                dev->driver.buffer->out_short = out_short;
         }
 
         return DataCallbackResult::Continue;
@@ -275,7 +275,7 @@ void delete_fluid_oboe_audio_driver(fluid_audio_driver_t *p)
 
 void fluid_oboe_audio_buffer_callback(fluid_audio_driver_t *p,fluid_audio_buffer_t *buffer)
 {
-    p->buffer = buffer;
+    p.buffer = buffer;
 }
 
 #endif // OBOE_SUPPORT
