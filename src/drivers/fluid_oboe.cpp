@@ -81,13 +81,13 @@ public:
         {
             fluid_synth_write_float(dev->synth, numFrames, static_cast<float *>(audioData), 0, 2, static_cast<float *>(audioData), 1, 2);
             if (dev->driver.callback)
-                (dev->driver.callback)(numFrames, FLUID_FAILED, audioData);
+                (dev->driver.callback)(numFrames, 0, static_cast<float *>audioData);
         }
         else
         {
             fluid_synth_write_s16(dev->synth, numFrames, static_cast<short *>(audioData), 0, 2, static_cast<short *>(audioData), 1, 2);
             if (dev->driver.callback)
-                (dev->driver.callback)(numFrames, audioData, FLUID_FAILED);
+                (dev->driver.callback)(numFrames, static_cast<short *>audioData, 0);
         }
         return DataCallbackResult::Continue;
     }
