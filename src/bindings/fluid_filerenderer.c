@@ -391,9 +391,6 @@ fluid_file_renderer_process_block(fluid_file_renderer_t *dev)
 
     fluid_synth_write_float(dev->synth, dev->period_size, dev->buf, 0, 2, dev->buf, 1, 2);
 
-    if (dev->driver.callback)
-        (dev->driver.callback)(dev->period_size, FLUID_FAILED, dev->buf);
-
     n = sf_writef_float(dev->sndfile, dev->buf, dev->period_size);
 
     if(n != dev->period_size)
@@ -410,9 +407,6 @@ fluid_file_renderer_process_block(fluid_file_renderer_t *dev)
     size_t res, nmemb = dev->buf_size;
 
     fluid_synth_write_s16(dev->synth, dev->period_size, dev->buf, 0, 2, dev->buf, 1, 2);
-
-    if (dev->driver.callback)
-        (dev->driver.callback)(dev->buf_size, dev->buf, FLUID_FAILED);
 
     res = fwrite(dev->buf, 1, nmemb, dev->file);
 
