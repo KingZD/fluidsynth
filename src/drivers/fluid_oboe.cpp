@@ -87,7 +87,7 @@ public:
         {
             fluid_synth_write_s16(dev->synth, numFrames, static_cast<short *>(audioData), 0, 2, static_cast<short *>(audioData), 1, 2);
             if (dev->driver.callback)
-                (dev->driver.callback)(numFrames, (float *)audioData, 0);
+                (dev->driver.callback)(numFrames, (short *)audioData, 0);
         }
         return DataCallbackResult::Continue;
     }
