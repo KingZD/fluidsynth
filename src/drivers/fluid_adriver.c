@@ -469,3 +469,9 @@ int fluid_audio_driver_register(const char **adrivers)
 
     return FLUID_OK;
 }
+
+int
+fluid_audio_buffer_callback(fluid_audio_driver_t *p, fluid_audio_stream_buffer_t handler) {
+    p->callback = handler;
+    return FLUID_OK;
+}

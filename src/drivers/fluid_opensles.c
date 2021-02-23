@@ -348,10 +348,14 @@ void process_fluid_buffer(fluid_opensles_audio_driver_t *dev)
     if(dev->is_sample_format_float)
     {
         fluid_synth_write_float(dev->synth, period_frames, out_float, 0, 2, out_float, 1, 2);
+        if (dev->driver.callback)
+            (dev->driver.callback)(period_frames, FLUID_FAILED, out_float);
     }
     else
     {
         fluid_synth_write_s16(dev->synth, period_frames, out_short, 0, 2, out_short, 1, 2);
+        if (dev->driver.callback)
+            (dev->driver.callback)(period_frames, out_short, FLUID_FAILED);
     }
 }
 

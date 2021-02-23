@@ -108,6 +108,12 @@ typedef int (*fluid_audio_func_t)(void *data, int len,
                                   int nfx, float *fx[],
                                   int nout, float *out[]);
 
+/*
+*定义音频流回调方法
+*/
+typedef void (*fluid_audio_stream_buffer_t)(int buf_size,short *s,float *f);
+
+
 /** @startlifecycle{Audio Driver} */
 FLUIDSYNTH_API fluid_audio_driver_t *new_fluid_audio_driver(fluid_settings_t *settings,
         fluid_synth_t *synth);
@@ -120,6 +126,10 @@ FLUIDSYNTH_API void delete_fluid_audio_driver(fluid_audio_driver_t *driver);
 /** @endlifecycle */
 
 FLUIDSYNTH_API int fluid_audio_driver_register(const char **adrivers);
+
+
+FLUIDSYNTH_API int fluid_audio_buffer_callback(fluid_audio_driver_t *p,
+		fluid_audio_stream_buffer_t handler);
 /* @} */
 
 /**

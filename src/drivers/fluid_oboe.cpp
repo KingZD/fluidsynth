@@ -80,12 +80,15 @@ public:
         if(stream->getFormat() == AudioFormat::Float)
         {
             fluid_synth_write_float(dev->synth, numFrames, static_cast<float *>(audioData), 0, 2, static_cast<float *>(audioData), 1, 2);
+            if (dev->driver.callback)
+                (dev->driver.callback)(numFrames, FLUID_FAILED, audioData);
         }
         else
         {
             fluid_synth_write_s16(dev->synth, numFrames, static_cast<short *>(audioData), 0, 2, static_cast<short *>(audioData), 1, 2);
+            if (dev->driver.callback)
+                (dev->driver.callback)(numFrames, audioData, FLUID_FAILED);
         }
-
         return DataCallbackResult::Continue;
     }
 
